@@ -8,14 +8,14 @@ public class PT_Basic_GameManager : MonoBehaviour {
     public PT_2D_Map_Builder MapManager;
     public string[] levelsData;
     public int currentLevelIndex = 0;
-    public float messageStayTime = 5f;
+    public float messageStayTime = 2f;
 
     public int maxLevelIndex;
     public int score;
     public int deaths;
 
     public Text scoreText;
-    public Text deathstext;
+    //public Text deathstext;
     public Text levelText;
     public Text winText;
     public Text startText;
@@ -47,7 +47,7 @@ public class PT_Basic_GameManager : MonoBehaviour {
         }
         int tmpLevel = currentLevelIndex + 1;
         scoreText.text = "Score: " + score.ToString();
-        deathstext.text = "Died: " + deaths.ToString();
+        //deathstext.text = "Died: " + deaths.ToString();
         levelText.text = "Level: " + tmpLevel.ToString();
         if (Input.GetKeyUp("n"))
         {
