@@ -40,6 +40,7 @@ namespace UnityStandardAssets
             {
                 //v2_movement = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), CrossPlatformInputManager.GetAxis("Vertical")) * fl_PC_Move_Speed;
                 v2_movement = CrossPlatformInputManager.GetAxis("Vertical") * fl_PC_Move_Speed * transform.up;
+                v2_movement = CrossPlatformInputManager.GetAxis("Horizontal") * fl_PC_Move_Speed * transform.right;
                 RB_PC.AddForce(v2_movement);
             }
             
