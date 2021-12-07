@@ -13,7 +13,7 @@ public class PT_Basic_GameManager : MonoBehaviour {
     public int maxLevelIndex;
     public int score;
     public int deaths;
-
+private int pastscore;
     public Text scoreText;
     //public Text deathstext;
     public Text levelText;
@@ -27,6 +27,7 @@ public class PT_Basic_GameManager : MonoBehaviour {
         MapManager.rawMapData = levelsData[currentLevelIndex];
         MapManager.ReloadMap();
         messageEnds = Time.time + messageStayTime;
+        pastscore = score;
     }
 	
 	// Update is called once per frame
@@ -72,5 +73,8 @@ public class PT_Basic_GameManager : MonoBehaviour {
     public void RestartLevel()
     {
         MapManager.ReloadMap();
+        score = pastscore;
+          scoreText.text = "Score: " + score.ToString();
+
     }
 }
