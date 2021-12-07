@@ -15,6 +15,7 @@ public class PT_2D_Map_Builder : MonoBehaviour {
     public GameObject verticalwallPrefab;
     public GameObject PCPrefab;
     public PT_camera_follow followCam;
+   // public Joystickkkk helpme;
     public string rawMapData = "0,1,0; 1,0,1; 0,0,0; 1,1,1";
     
 
@@ -104,6 +105,7 @@ public class PT_2D_Map_Builder : MonoBehaviour {
                     _currentWall = Instantiate(PCPrefab, transform);
                     _currentWall.transform.localPosition = new Vector3(colCount, -rowCount, 0);
                     followCam.gameObjectFollowedByCamera = _currentWall;
+                    //helpme.player=_currentWall.transform;
                 }
             }
 
