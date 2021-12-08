@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +7,7 @@ public class PT_2D_Moving_Obstacle : MonoBehaviour {
     public List<GameObject> wayPoints;
     public int startingWayPoint = 0;
     public float movementSpeed = 3;
-    private int currentWayPoint;
+    public int currentWayPoint;
     private Rigidbody2D RB_NPC;
 
     // Use this for initialization
@@ -29,7 +29,7 @@ public class PT_2D_Moving_Obstacle : MonoBehaviour {
         Vector2 direction = ((Vector2)wayPoints[currentWayPoint].transform.position - (Vector2)transform.position).normalized;
 
         // set vector of transform directly
-        transform.up = direction;
+       transform.up = direction;
 
         //Add up force
         //RB_NPC.AddForce(transform.up * movementSpeed);

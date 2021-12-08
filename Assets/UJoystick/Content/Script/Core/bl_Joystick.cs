@@ -10,6 +10,7 @@ public class bl_Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField, Range(1, 15)]private float Radio = 5;//the ratio of the circumference of the joystick
     [SerializeField, Range(0.01f, 1)]private float SmoothTime = 0.5f;//return to default position speed
     [SerializeField, Range(0.5f, 4)] private float OnPressScale = 1.5f;//return to default position speed
+    [SerializeField, Range(0.5f, 4)] private float OnPressScale2 = 1.1f;
     public Color NormalColor = new Color(1, 1, 1, 1);
     public Color PressColor = new Color(1, 1, 1, 1);
     [SerializeField, Range(0.1f, 5)]private float Duration = 1;
@@ -28,7 +29,7 @@ public class bl_Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private Canvas m_Canvas;
     private float diff;
     private Vector3 PressScaleVector;
-
+private Vector3 PressScaleVector2;
     /// <summary>
     /// 
     /// </summary>
@@ -60,6 +61,7 @@ public class bl_Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         DeathArea = CenterReference.position;
         diff = CenterReference.position.magnitude;
         PressScaleVector = new Vector3(OnPressScale, OnPressScale, OnPressScale);
+        PressScaleVector2 = new Vector3(OnPressScale2, OnPressScale2, OnPressScale2);
         if (GetComponent<Image>() != null)
         {
             backImage = GetComponent<Image>();
@@ -168,17 +170,19 @@ public class bl_Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     IEnumerator ScaleJoysctick(bool increase)
     {
         float _time = 0;
-
+           
             while (_time < Duration)
             {
                 Vector3 v = StickRect.localScale;
+                Vector3 v1= StickRect.localScale;
             if (increase)
             {
                 v = Vector3.Lerp(StickRect.localScale, PressScaleVector, (_time / Duration));
             }
             else
             {
-                v = Vector3.Lerp(StickRect.localScale, Vector3.one, (_time / Duration));
+                
+               v = Vector3.Lerp(StickRect.localScale, PressScaleVector2, (_time / Duration));
             }
             StickRect.localScale = v;
                 _time += Time.deltaTime;
