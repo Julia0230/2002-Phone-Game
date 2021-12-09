@@ -9,7 +9,8 @@ public class PT_2D_Map_Builder : MonoBehaviour {
     public GameObject wallPrefab;
     public GameObject exitPrefab;
     
-    public GameObject movingDangerPrefab;
+    public GameObject leftrightdanger;
+    public GameObject updowndanger;
     public GameObject pickupPrefab;
     public GameObject horizontalwallPrefab;
     public GameObject verticalwallPrefab;
@@ -80,7 +81,12 @@ public class PT_2D_Map_Builder : MonoBehaviour {
                 }
                 else if (currentMapData[rowCount, colCount] == 3)
                 {
-                    _currentWall = Instantiate(movingDangerPrefab, transform);
+                    _currentWall = Instantiate(leftrightdanger, transform);
+                    _currentWall.transform.localPosition = new Vector3(colCount, -rowCount, 0);
+                }
+                 else if (currentMapData[rowCount, colCount] == 7)
+                {
+                    _currentWall = Instantiate(updowndanger, transform);
                     _currentWall.transform.localPosition = new Vector3(colCount, -rowCount, 0);
                 }
                 else if (currentMapData[rowCount, colCount] == 4)

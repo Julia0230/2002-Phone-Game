@@ -64,6 +64,7 @@ private int pastscore;
             print("currentlevelIndex: " + currentLevelIndex.ToString());
             MapManager.rawMapData = levelsData[currentLevelIndex];
             MapManager.ReloadMap();
+            pastscore = score;
         }
         else
         {
