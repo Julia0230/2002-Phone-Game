@@ -15,7 +15,8 @@ public class IS_Move2 : MonoBehaviour
     private GameObject hoestick;
     float horizontal;
     float vertical;
-  
+  //float horizontal2;
+  //float vertical2;
     private bool facingleft;
     private Animator anime; 
     public Sprite first;
@@ -36,8 +37,8 @@ public class IS_Move2 : MonoBehaviour
     void Update()
     {
         // Gives a value between -1 and 1
-        //horizontal = Input.GetAxisRaw("Horizontal"); // -1 is left
-        //vertical = Input.GetAxisRaw("Vertical"); // -1 is down
+        //horizontal2 = Input.GetAxisRaw("Horizontal"); // -1 is left
+       // vertical2 = Input.GetAxisRaw("Vertical"); // -1 is down
         horizontal = joystick.Horizontal;
         vertical = joystick.Vertical;
     }
@@ -56,7 +57,7 @@ public class IS_Move2 : MonoBehaviour
             render.sprite = first;
 
         }
-        
+      
     if(horizontal <-0.1)
 {
     facingleft=true;}
@@ -64,6 +65,7 @@ public class IS_Move2 : MonoBehaviour
   { facingleft=false;
 
   }
+  
 if (((facingleft ) && (localScale.x < 0 )) || ((!facingleft) && (localScale.x > 0 ))) 
 {
          localScale.x *= -1;}

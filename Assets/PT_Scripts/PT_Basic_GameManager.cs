@@ -19,6 +19,7 @@ private int pastscore;
     public Text levelText;
     public Text winText;
     public Text startText;
+    public GameObject lastpannel;
 
     private float messageEnds;
 
@@ -68,7 +69,7 @@ private int pastscore;
         }
         else
         {
-            winText.gameObject.SetActive(true);
+            lastpannel.SetActive(true);
         }
     }
     public void RestartLevel()

@@ -4,27 +4,73 @@ using UnityEngine;
 
 public class IS_Move : MonoBehaviour
 {
-    public float MovementSpeed = 2;
-    public float JumpForce = 1;
-    private Rigidbody2D _rigidbody;
+    Rigidbody2D body;
 
-    // Start is called before the first frame update
+    
+    float moveLimiter = 0.7f;
+
+    public float runSpeed = 20.0f;
+    //joystick
+    //public bl_Joystick joystick;
+    //private GameObject hoestick;
+    float horizontal;
+    float vertical;
+  
+    private bool facingleft;
+    private Animator anime; 
+    public Sprite first;
+    private SpriteRenderer render;
+    
+
     void Start()
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
+        body = GetComponent<Rigidbody2D>();
+        //joystick
+        //hoestick= GameObject.Find("Joystick");
+        //joystick= hoestick.GetComponent<bl_Joystick>();
+        //animator
+        anime = GetComponent<Animator>();
+        render = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        var movement = Input.GetAxis("Horizontal");
-        var movement2 = Input.GetAxis("Vertical");
-        transform.position += new Vector3(movement, 0, 0) * Time.deltaTime * MovementSpeed;
-        transform.position += new Vector3(movement2, 0, 0) * Time.deltaTime * MovementSpeed;
+        // Gives a value between -1 and 1
+        horizontal = Input.GetAxisRaw("Horizontal"); // -1 is left
+        vertical = Input.GetAxisRaw("Vertical"); // -1 is down
+    
+    }
 
-        //if (Input.GetButtonDown("Jump") && Mathf.Abs(_rigidbody.velocity.y) <0.001f)
-        //{
-        //    _rigidbody.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
-        //}
+    void FixedUpdate()
+    { Vector2 localScale = transform.localScale;
+        if (horizontal != 0 && vertical != 0) // Check for diagonal movement
+        {   anime.enabled= true;
+            // limit movement speed diagonally, so you move at 70% speed
+            horizontal *= moveLimiter;
+            vertical *= moveLimiter;
+        }
+        else
+        {
+            anime.enabled = false;
+            render.sprite = first;
+
+        }
+    
+  //  if(horizontal <-0.1)
+//{
+  //  facingleft=true;}
+  //  else if(horizontal >0.1)
+ // { facingleft=false;
+
+ // }
+  
+//if (((facingleft ) && (localScale.x < 0 )) || ((!facingleft) && (localScale.x > 0 ))) 
+//{
+  //       localScale.x *= -1;}
+
+
+        body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+
+//transform.localScale = localScale;
     }
 }

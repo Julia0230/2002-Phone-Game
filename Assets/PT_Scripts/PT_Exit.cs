@@ -7,7 +7,7 @@ public class PT_Exit : MonoBehaviour {
    
     public IS_NextCanvas canvas;
     private PT_Basic_GameManager gameManager;
-    private int i=0;
+    public static int i=0;
     //public AudioClip song;
     //public AudioSource source;
    
@@ -26,13 +26,26 @@ public class PT_Exit : MonoBehaviour {
             gameManager.LoadNextLevel();
             gameObject.SetActive(false);
             other.gameObject.transform.position = new Vector3(-10, -10, 0);
+            
             if(i==0)
-            {   canvas.source.clip=canvas.song;
+            {   i++;
+                canvas.source.clip=canvas.song;
                 canvas.source.Play();
                 canvas.MyRef1.SetActive(true);
-                i++;
+            
+        
             }
-
+           // else if(i==2 || i==1)
+           // { 
+            //    i++;
+           //}
+              //else  if(i==3)
+           //{   canvas.source.clip=canvas.song;
+            //    canvas.source.Play();
+            //    canvas.MyRef2.SetActive(true);
+             //   i++;
+        
+            //}
         }
     }
 
