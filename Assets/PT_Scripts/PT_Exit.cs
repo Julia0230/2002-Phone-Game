@@ -35,7 +35,7 @@ public class PT_Exit : MonoBehaviour {
             
         
             }
-           // else if(i==2 || i==1)
+           //    else if(i==2 || i==1)
            // { 
             //    i++;
            //}
